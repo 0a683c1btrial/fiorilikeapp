@@ -1,0 +1,91 @@
+<mvc:View  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cgi.hr.so.controller.View2" 
+xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+<Page title="view2" id="page2">
+<!-- <Text text="Welcome to View2"/> -->
+<Button text="Back" press="onNavBack"/> 
+<ObjectHeader title="{NAME}" intro="{CATEGORY}" number="{PRICE}" numberUnit="{CURRENCY_CODE}" icon="{imageURL}"/>
+<IconTabBar>
+    <items>
+        <IconTabFilter text="More Info" icon="sap-icon://information">
+        <f:SimpleForm id="sform">
+            <f:content>
+                <Label text="Name"></Label>
+                <Text text="{NAME}"></Text>
+                <Label text="Category"></Label>
+                <Text text="{CATEGORY}"></Text>
+                <Label text="Price and Currency"></Label>
+                <Text text="{PRICE} {CURRENCEY_CODE}"></Text>
+                <Label text="Supplier id"></Label>
+                <Text text="{SUPPLIER_ID}"></Text>
+                <core:Title text="Supplier Data"></core:Title>
+                <Label text="Supplier id"></Label>
+                <Text text="{to_supplier/BP_ID}"></Text>
+                <Label text="Company Name"></Label>
+                <Text text="{to_supplier/COMPANY_NAME}"></Text>
+                <Label text="Location"></Label>
+                <Text text="{to_supplier/CITY} {to_supplier/COUNTRY}"></Text>
+               </f:content>
+        </f:SimpleForm> 
+          <Image id="idImg"/>                
+        </IconTabFilter>            
+         <IconTabFilter text="Suppliers" icon="sap-icon://supplier">
+         <Table id="supTable" items="{/SupplierSet}" itemPress="onSupplierSelect" mode="MultiSelect">
+ <headerToolbar>
+    <Toolbar>
+       <ToolbarSpacer/>
+        <Button id="filter" press="onFilterSupplier" icon="sap-icon://filter"/>
+        <Button id="Delete" press="onDelete" icon="sap-icon://delete"/>
+    </Toolbar>   
+ </headerToolbar>
+            <columns>
+                <Column>
+                    <header>
+                        <Label text="Supplier id"/>
+                    </header>
+                </Column>
+                <Column>
+                    <header>
+                        <Label text="Supplier Role"/>
+                    </header>
+                </Column>
+                <Column minScreenWidth="Tablet">
+                    <header>
+                        <Label text="Mail address"/>
+                    </header>
+                </Column>
+                <Column minScreenWidth="Tablet">
+                    <header>
+                        <Label text="Company Name"/>
+                    </header>
+                </Column>
+            </columns>
+            <items>
+            <ColumnListItem type="Navigation">
+            <cells>
+                <Text text="{BP_ID}"></Text>
+              <!--  <Input value="{city}" showValueHelp="true" valueHelpRequest="onF4Help"></Input> -->
+                <Input value="{BP_ROLE}" showValueHelp="true" valueHelpRequest="onF4Help" ></Input>
+                <Text text="{EMAIL_ADDRESS}"></Text>
+                <Text text="{COMPANY_NAME}"></Text>
+            </cells>
+            </ColumnListItem>
+            </items>
+            </Table>
+    </IconTabFilter>
+     <!--   <IconTabFilter text="Cities" icon="sap-icon://home">
+            <MultiComboBox id="citydrop" items="{/cities}">
+            <core:Item key="{name}" text="{name}"/>
+            </MultiComboBox>
+        </IconTabFilter> -->    
+    </items> 
+</IconTabBar>
+
+<footer>
+<Toolbar>
+    <ToolbarSpacer></ToolbarSpacer>
+    <Button text="Save" icon="sap-icon://save" press="onSave" type="Accept"/>
+    <Button text="Cancel" icon="sap-icon://save" press="onCancel" type="Reject"/>
+</Toolbar>
+</footer>
+</Page>
+</mvc:View>
